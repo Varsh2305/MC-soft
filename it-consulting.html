@@ -1,798 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>IT Consulting | MC Soft</title>
-    <style>
-        :root {
-            --color-primary: #7d2e3d;
-            --color-secondary: #e8b75f;
-            --color-background: #f8f9fa;
-            --color-text: #333333;
-            --color-text-light: #666666;
-            --color-white: #ffffff;
-            --color-hero-bg: #b8d4e6;
-            --color-border: rgba(0, 0, 0, 0.1);
-            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-primary);
-            color: var(--color-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        header {
-            background: var(--color-white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem;
-            color: var(--color-primary);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .logo p {
-            font-size: 0.75rem;
-            color: var(--color-text-light);
-            margin-top: -4px;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--color-text);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-primary);
-        }
-
-        /* Dropdown Menu Styles */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            cursor: pointer;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: var(--color-white);
-            box-shadow: var(--shadow-md);
-            border-radius: 8px;
-            padding: 0.5rem 0;
-            list-style: none;
-            min-width: 220px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: var(--transition);
-            z-index: 1000;
-            margin-top: 0.5rem;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu li {
-            margin: 0;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 0.8rem 1.5rem;
-            color: var(--color-text);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .dropdown-menu a:hover {
-            background: var(--color-background);
-            color: var(--color-primary);
-            padding-left: 1.8rem;
-        }
-
-        .dropdown-menu a::after {
-            display: none;
-        }
-
-        .btn-get-started {
-            background: var(--color-secondary);
-            color: var(--color-text);
-            padding: 0.7rem 1.8rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 0.95rem;
-        }
-
-        .btn-get-started:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(93, 173, 226, 0.9) 0%, rgba(41, 128, 185, 0.85) 50%, rgba(52, 152, 219, 0.8) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%235dade2;stop-opacity:0.4" /><stop offset="100%" style="stop-color:%232980b9;stop-opacity:0.3" /></linearGradient></defs><rect fill="url(%23grad1)" width="1200" height="800"/><circle cx="200" cy="150" r="80" fill="%23ffffff" opacity="0.15"/><circle cx="900" cy="200" r="120" fill="%233498db" opacity="0.2"/><circle cx="600" cy="500" r="100" fill="%235dade2" opacity="0.25"/><circle cx="300" cy="600" r="60" fill="%23ffffff" opacity="0.2"/><circle cx="1000" cy="600" r="90" fill="%232980b9" opacity="0.15"/><rect x="150" y="100" width="150" height="100" fill="%23ffffff" opacity="0.1" transform="rotate(15 225 150)"/><rect x="800" y="400" width="120" height="80" fill="%233498db" opacity="0.15" transform="rotate(-20 860 440)"/><rect x="400" y="300" width="100" height="100" fill="%235dade2" opacity="0.2" transform="rotate(25 450 350)"/><polygon points="100,700 150,750 50,750" fill="%23ffffff" opacity="0.12"/><polygon points="1100,100 1150,150 1050,150" fill="%232980b9" opacity="0.15"/></svg>');
-            background-size: cover;
-            background-position: center;
-            background-blend-mode: overlay;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-text h2 {
-            font-size: 3.5rem;
-            color: var(--color-white);
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: var(--color-white);
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .btn-primary {
-            background: var(--color-secondary);
-            color: var(--color-text);
-            padding: 0.9rem 2.2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-secondary {
-            background: var(--color-white);
-            color: var(--color-text);
-            padding: 0.9rem 2.2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 1px solid var(--color-border);
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* What We Do Section */
-        .what-we-do {
-            padding: 5rem 2rem;
-            background: var(--color-background);
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            text-align: left;
-            margin-bottom: 3rem;
-            font-weight: 700;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, #fef9e7 0%, #f9ebea 100%);
-            padding: 2.5rem;
-            border-radius: 12px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--color-border);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .service-icon svg {
-            width: 60px;
-            height: 60px;
-            stroke: var(--color-primary);
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--color-text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .learn-more {
-            color: #5dade2;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .learn-more:hover {
-            color: #3498db;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 5rem 2rem;
-            background: var(--color-white);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            background: linear-gradient(135deg, #fff5f7 0%, #e8f6f8 100%);
-            padding: 3rem;
-            border-radius: 16px;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .about-text p {
-            font-size: 1.05rem;
-            color: var(--color-text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .about-features {
-            display: grid;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--color-secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        /* Services Detail Section */
-        .services-detail {
-            padding: 5rem 2rem;
-            background: var(--color-background);
-        }
-
-        .services-detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-detail-card {
-            background: linear-gradient(135deg, #e8f8f5 0%, #fef5e7 100%);
-            padding: 2rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--color-primary);
-        }
-
-        .service-detail-card h3 {
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .service-detail-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .service-detail-card li {
-            padding: 0.5rem 0;
-            color: var(--color-text-light);
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .service-detail-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-secondary);
-            font-weight: bold;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 5rem 2rem;
-            background: var(--color-white);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-form {
-            background: linear-gradient(135deg, #ebf5fb 0%, #fef9e7 100%);
-            padding: 2.5rem;
-            border-radius: 12px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--color-text);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.9rem;
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            font-family: var(--font-primary);
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 1rem;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-info h3 {
-            color: var(--color-primary);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #f4ecf7 0%, #e8f6f3 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
-
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--color-secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .info-item div h4 {
-            color: var(--color-text);
-            margin-bottom: 0.3rem;
-            font-size: 1rem;
-        }
-
-        .info-item div p {
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #7b2cbf;
-            padding: 2rem;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-logo h3 {
-            font-size: 1.5rem;
-            color: var(--color-white);
-            font-weight: 700;
-        }
-
-        .footer-logo p {
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--color-white);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--color-white);
-            transition: var(--transition);
-        }
-
-        .social-icon:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: var(--color-white);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: var(--color-white);
-                width: 100%;
-                text-align: center;
-                transition: var(--transition);
-                box-shadow: var(--shadow-md);
-                padding: 2rem;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                margin-top: 0.5rem;
-                background: var(--color-background);
-            }
-
-            .dropdown:hover .dropdown-menu {
-                display: none;
-            }
-
-            .dropdown.active .dropdown-menu {
-                display: block;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .hero-content,
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-text h2 {
-                font-size: 2.5rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero-text h2 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .services-grid,
-            .services-detail-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>IT Consulting | MC Soft</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --color-primary: #7d2e3d;
+      --color-secondary: #e8b75f;
+      --color-background: #f8f9fa;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-white: #ffffff;
+      --color-footer: #7b2cbf;
+      --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --shadow-md: 0 4px 8px rgba(0,0,0,0.12);
+      --border-radius: 14px;
+      --transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-primary);
+      background: var(--color-background);
+      color: var(--color-text);
+      min-height: 100vh;
+    }
+    header {
+      background: var(--color-white);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky; top: 0; z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto; padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .logo h1 { font-size: 1.8rem; color: var(--color-primary); font-weight: 700; }
+    .logo p { font-size: 0.90rem; color: var(--color-text-light); margin-top: -4px; }
+    .nav-links {
+      display: flex; list-style: none; gap: 2rem; align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--color-text); font-weight: 500;
+      font-size: 1rem; transition: var(--transition); position: relative; padding-bottom: 4px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -5px; width: 0; height: 2px;
+      background: var(--color-primary); transition: var(--transition);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-primary);}
+    .dropdown { position: relative; }
+    .dropdown-toggle::after { content: ' ▼'; font-size: 0.88em; color: var(--color-primary);}
+    .dropdown-menu {
+      position: absolute; top: 100%; left: 0;
+      background: var(--color-white); box-shadow: var(--shadow-md);
+      border-radius: 8px; padding: 0.5rem 0; list-style: none; min-width: 220px;
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: var(--transition); z-index: 1000; margin-top: 0.5rem;
+    }
+    .dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu {
+      opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .dropdown-menu li { margin: 0; }
+    .dropdown-menu a {
+      display: block; padding: 0.8rem 1.5rem; color: var(--color-text);
+      text-decoration: none; transition: var(--transition); font-size: 0.95rem;
+    }
+    .dropdown-menu a:hover, .dropdown-menu a.active {
+      background: var(--color-background); color: var(--color-primary); padding-left: 1.8rem;
+    }
+    .btn-get-started {
+      background: var(--color-secondary);
+      color: var(--color-text);
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-left: 1rem;
+      transition: var(--transition);
+      outline: none;
+    }
+    .btn-get-started:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .page-hero {
+      background: linear-gradient(135deg,  #47a8df 70%, #47a8df 100%);
+      color: var(--color-white);
+      padding: 5rem 2rem 4rem 2rem;
+      text-align: center;
+    }
+    .page-hero h2 {
+      font-size: 2.65rem;
+      letter-spacing: 1px;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .page-hero p {
+      font-size: 1.15rem;
+      color: #f8f9fa;
+      margin-bottom: 0.2rem;
+    }
+    main {
+      max-width: 1200px;
+      margin: -70px auto 0 auto;
+      background: var(--color-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      padding: 2.5rem 2rem 4rem 2rem;
+      position: relative;
+      z-index: 10;
+    }
+    .intro-text {
+      text-align: center;
+      max-width: 670px;
+      margin: 0 auto 2.4rem auto;
+      font-size: 1.15rem;
+      color: var(--color-text-light);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .service-card {
+      background: linear-gradient(135deg, #fef9e7 0%, #f9ebea 100%);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 5px solid var(--color-primary);
+      transition: var(--transition);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .service-icon {
+      font-size: 2.1rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-primary);
+    }
+    .service-card h3 {
+      font-size: 1.13rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .service-card p {
+      color: var(--color-text-light);
+      font-size: 0.99rem;
+      margin-bottom: 0.25rem;
+    }
+    .highlights-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .highlight-box {
+      flex: 1 1 220px;
+      background: linear-gradient(135deg, #e8b75f 0%, #fff 100%);
+      border-radius: var(--border-radius);
+      padding: 1.8rem 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      margin: 0.5rem;
+      color: #7d2e3d;
+      font-weight: 600;
+    }
+    .highlight-icon {
+      font-size: 2rem;
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+    .highlight-value {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    .highlight-label {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--color-primary);
+    }
+    .contact-sidebar {
+      position: absolute;
+      top: 2.5rem;
+      right: -340px;
+      width: 260px;
+      background: var(--color-secondary);
+      color: var(--color-primary);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      padding: 1.7rem 1.2rem 1.4rem 1.2rem;
+      font-size: 1.04rem;
+      z-index: 50;
+      transition: right 0.4s;
+    }
+    .show-contact {
+      right: 25px !important;
+    }
+    .contact-toggle-btn {
+      position: absolute;
+      top: 2.5rem;
+      right: 0;
+      background: #fff;
+      color: var(--color-primary);
+      border-radius: 8px 0 0 8px;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      padding: 0.55rem 0.7rem;
+      font-weight: bold;
+      border: none;
+      transition: background 0.2s;
+      z-index: 60;
+    }
+    .contact-toggle-btn:hover {
+      background: var(--color-secondary);
+      color: #fff;
+    }
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      margin: 2.5rem 0 0 0;
+    }
+    .cta-row button {
+      padding: 1rem 2.5rem;
+      font-size: 1.08rem;
+      font-weight: bold;
+      border-radius: 22px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: var(--color-footer);
+      color: #fff;
+    }
+    .cta-row button:hover { background: #7b2cbf; }
+    footer {
+      background: var(--color-primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 2rem 1rem 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid #e9ecef;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .footer-logo h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 700;
+      margin: 0;
+    }
+    .footer-logo p {
+      font-size: 0.9rem;
+      color: #eae6fa;
+      margin: 0;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.98rem;
+    }
+    .footer-links a {
+      color: #eae6fa;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: #fff; }
+    @media (max-width: 900px) {
+      .contact-sidebar { display: none; }
+      .footer-content { flex-direction: column; gap: 2rem;}
+    }
+    @media (max-width: 700px) {
+      .nav-container, main { padding-left: 1rem; padding-right: 1rem;}
+      .services-grid { grid-template-columns: 1fr;}
+      .footer-content { font-size: 0.97rem;}
+      .highlight-box { min-width: 150px;}
+      .highlights-row { gap:1rem;}
+      .cta-row { flex-direction: column; gap: 1rem;}
+    }
+  </style>
 </head>
 <body>
-    <!-- Header/nav as above, set IT Consulting as active in dropdown -->
-    <!-- Header -->
-    <header id="header">
-        <div class="nav-container">
-            <div class="logo">
-                <h1>MC Soft</h1>
-                <p>Technologies and IT Solutions</p>
-            </div>
-            <nav>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle active">Categories ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="recruitment.html" class="active">Recruitment</a></li>
-                        <li><a href="admission.html">Admission</a></li>
-                        <li><a href="it-consulting.html">IT Consulting</a></li>
-                        <li><a href="overseas-education.html">Overseas Education</a></li>
-                        <li><a href="training-placement.html">Training &amp; Placement</a></li>
-                    </ul>
-                </li>
-                <li><a href="index.html#contact">Contact</a></li>
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <h1>MC Soft</h1>
+        <p>Technologies and IT Solutions</p>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle active">Categories</a>
+            <ul class="dropdown-menu">
+              <li><a href="recruitment.html">Recruitment</a></li>
+              <li><a href="admission.html">Admission</a></li>
+              <li><a href="it-consulting.html" class="active">IT Consulting</a></li>
+              <li><a href="overseas-education.html">Overseas Education</a></li>
+              <li><a href="training-placement.html">Training & Placement</a></li>
             </ul>
-            <a href="index.html#contact" class="btn-get-started">Get Started</a>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
-        </nav>
-        </div>
-    </header>
-    <section class="what-we-do">
-        <div class="section-container">
-            <h2 class="section-title">IT Consulting</h2>
-            <div class="service-detail-card" style="margin-bottom: 2rem;">
-                <h3>IT Consulting</h3>
-                <ul>
-                    <li>Digital Transformation</li>
-                    <li>Technology Strategy</li>
-                    <li>System Integration</li>
-                    <li>Cloud Migration</li>
-                    <li>Cybersecurity Solutions</li>
-                </ul>
-            </div>
-            <p>MC Soft delivers strategic consulting solutions to help organizations optimize their IT infrastructure, improve security, and drive digital transformation.</p>
-        </div>
+          </li>
+          <li><a href="#contactSidebar">Contact</a></li>
+        </ul>
+      </nav>
+      
+    </div>
+  </header>
+  <!-- Hero -->
+  <section class="page-hero">
+    <h2>IT Consulting & Digital Solutions</h2>
+    <p>Accelerate your business with scalable, secure, and innovative technology expertise</p> <br>
+  </section>
+  <!-- Main content -->
+  <main>
+    <button class="contact-toggle-btn" id="one" onclick="toggleContactSidebar()">Contact</button>
+    <aside class="contact-sidebar" id="contactSidebar">
+      <b>Contact</b><br>
+      Phone: <a href="tel:+917338843799">+91 7338843799</a><br>
+      Email: <a href="mailto:mcsoft99@gmail.com">mcsoft99@gmail.com</a><br>
+      Address:<br>
+      D.NoF2, First Floor,<br>
+      Anantha Lakshmi Building,<br>
+      87/10 MTH Road, Mannurpet,<br>
+      Chennai-600 058<br>
+      <br>
+      Business Hours:<br>
+      Mon-Fri 10 AM–6 PM
+    </aside>
+    
+    <section class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>Digital Transformation</h3>
+        <p>Re-engineer core business workflows and embrace digital frameworks for greater agility and growth.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <h3>Technology Strategy</h3>
+        <p>Expert assessment and planning to align IT investments with vision, ROI, and sustainable success.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <h3>System Integration</h3>
+        <p>Unify enterprise applications, automate business processes, and drive collaboration across your ecosystem.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">☁️</div>
+        <h3>Cloud Migration</h3>
+        <p>Seamless migration to cloud platforms for scalability, innovation, and futureproofing your business.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛡️</div>
+        <h3>Cybersecurity Solutions</h3>
+        <p>Protection and ongoing monitoring with next-gen firewalls, vulnerability assessment, and compliance tools.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛠️</div>
+        <h3>IT Support & Managed Services</h3>
+        <p>Proactive monitoring, troubleshooting, and support to maintain business continuity and drive growth.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>Optimization & Training</h3>
+        <p>Performance tuning, system upgrades, and continuous learning for technology-enabled talent and growth.</p>
+      </div>
     </section>
-    <!-- Copy the footer code from index.html -->
+    <!-- Value Highlights -->
+    <div class="highlights-row">
+      <div class="highlight-box">
+        <div class="highlight-icon">🌐</div>
+        <div class="highlight-value">100+</div>
+        <div class="highlight-label">Clients Worldwide</div>
+      </div>
+      <div class="highlight-box">
+        <div class="highlight-icon">📊</div>
+        <div class="highlight-value">5000+</div>
+        <div class="highlight-label">Projects Delivered</div>
+      </div>
+      <div class="highlight-box">
+        <div class="highlight-icon">💡</div>
+        <div class="highlight-value">16+</div>
+        <div class="highlight-label">Years Experience</div>
+      </div>
+      <div class="highlight-box">
+        <div class="highlight-icon">🔒</div>
+        <div class="highlight-value">Secure</div>
+        <div class="highlight-label">By Design</div>
+      </div>
+    </div>
+    <!-- CTA Button -->
+    <div class="cta-row">
+      <button class="primary">Apply Now</button>
+    </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>MC Soft</h3>
+        <p>Technologies and IT Solutions</p>
+      </div>
+      <div class="footer-links">
+        <a href="about.html">About Us</a>
+        <a href="careers.html">Careers</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div style="color:#eae6fa;font-size:0.97rem;margin-top:8px;">
+        &copy; 2024 MC Soft Technologies. All rights Reserved
+      </div>
+    </div>
+  </footer>
+  <script>
+    function toggleContactSidebar() {
+      const sidebar = document.getElementById('contactSidebar');
+      sidebar.classList.toggle('show-contact');
+    }
+  </script>
 </body>
 </html>
