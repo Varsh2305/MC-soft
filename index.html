@@ -535,7 +535,7 @@
             font-size: 0.95rem;
         }
     /* Footer */
-    footer { background: #7b2cbf; padding: 2rem; border-top: 1px solid var(--color-border); }
+    footer { background: #7d2e3d; padding: 2rem; border-top: 1px solid var(--color-border); }
     .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .footer-logo { display: flex; flex-direction: column; }
     .footer-logo h3 { font-size: 1.5rem; color: var(--color-white); font-weight: 700; }
@@ -584,7 +584,6 @@
             <a href="#categories" class="dropdown-toggle">Categories ▾</a>
             <ul class="dropdown-menu">
               <li><a href="recruitment.html">Recruitment</a></li>
-              <li><a href="admission.html">Admission</a></li>
               <li><a href="it-consulting.html">IT Consulting</a></li>
               <li><a href="overseas-education.html">Overseas Education</a></li>
               <li><a href="training-placement.html">Training &amp; Placement</a></li>
@@ -611,7 +610,7 @@
     </div>
     <div class="hero-image">
     <svg width="500" height="400" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <img src="isometric-design-business-people-meeting.png" alt="Business Meeting" style="max-width: 520px; width: 100%; height: auto; display: block;">
+      <img src="C:\Users\varsh\Downloads\isometric-design-business-people-meeting.png" alt="Business Meeting" style="max-width: 520px; width: 100%; height: auto; display: block;">
     </svg>
     </div>
   </div>
@@ -856,7 +855,7 @@
     }
     .services-card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
       max-width: 1200px;
       margin: 0 auto;
@@ -910,7 +909,6 @@
     .learn-more:hover {
       color: var(--color-secondary);
     }
-    /* Example SVG backgrounds */
     .icon-bg-1 { background: #f7e9ec; }
     .icon-bg-2 { background: #f3eafd; }
     .icon-bg-3 { background: #e6f7ff; }
@@ -918,7 +916,10 @@
     .icon-bg-5 { background: #fff8f0; }
     @media (max-width: 700px) {
       .services-card-section h2 { font-size: 2.1rem;}
-      .services-card-grid { gap: 1.3rem; }
+      .services-card-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.3rem; 
+      }
       .service-card.custom-card { padding: 1.2rem 0.4rem;}
       .service-icon { width:65px; height:65px;}
     }
@@ -928,6 +929,7 @@
   <section class="services-card-section">
     <h2>Our Services</h2>
     <div class="services-card-grid">
+      <!-- Service cards go here -->
       <div class="service-card custom-card">
         <div class="service-icon icon-bg-1">
           <!-- User Person Icon -->
@@ -936,15 +938,6 @@
         <h3>Recruitment</h3>
         <p>Expert hiring solutions for domestic & international placements, ensuring best-fit talent for your business needs.</p>
         <a href="recruitment.html" class="learn-more">Learn More</a>
-      </div>
-      <div class="service-card custom-card">
-        <div class="service-icon icon-bg-2">
-          <!-- Graduation Cap Icon -->
-          <svg width="42" height="42" viewBox="0 0 42 42"><circle cx="21" cy="21" r="19" stroke="#7d2e3d" stroke-width="3" fill="none"/><path d="M12 21l9-5 9 5-9 5-9-5z" fill="none" stroke="#7d2e3d" stroke-width="2"/><path d="M21 26v-5" stroke="#7d2e3d" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <h3>Admissions</h3>
-        <p>Comprehensive admission guidance for MBBS, Engineering, Nursing, Arts, and all educational programs worldwide.</p>
-        <a href="admission.html" class="learn-more">Learn More</a>
       </div>
       <div class="service-card custom-card">
         <div class="service-icon icon-bg-3">
@@ -961,7 +954,7 @@
           <svg width="42" height="42" viewBox="0 0 42 42"><circle cx="21" cy="21" r="19" stroke="#7d2e3d" stroke-width="3" fill="none"/><ellipse cx="21" cy="21" rx="8" ry="19" stroke="#7d2e3d" stroke-width="2" fill="none"/><ellipse cx="21" cy="21" rx="19" ry="8" stroke="#7d2e3d" stroke-width="2" fill="none"/></svg>
         </div>
         <h3>Overseas Education</h3>
-        <p>Guidance for study abroad programs, visa assistance, and counseling for any country or stream.</p>
+        <p>Comprehensive admission guidance for MBBS, Engineering, Nursing, Arts, and all educational programs worldwide. Guidance for study abroad programs, visa assistance, and counseling for any country or stream.</p>
         <a href="overseas-education.html" class="learn-more">Learn More</a>
       </div>
       <div class="service-card custom-card">
@@ -1005,7 +998,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <input type="submit" id="button" class="submit-btn" value="Send Email" >
                     </form>
                 </div>
 
@@ -1055,19 +1048,26 @@
       <ul class="footer-links">
         <li><a href="#home">Privacy</a></li>
         <li><a href="#about">Terms</a></li>
-        <li><a href="#services">Sitemap</a></li>
+        <li><a href="https://www.google.com/maps/place/Mc+Soft+pvt+ltd/@13.0991321,80.1695782,17z/data=!3m1!4b1!4m6!3m5!1s0x3a5266ed1d59a0b1:0x6f615ec575688a71!8m2!3d13.0991321!4d80.1721531!16s%2Fg%2F11b6gf0vzr!5m1!1e2?entry=ttu&g_ep=EgoyMDI1MTAyNy4wIKXMDSoASAFQAw%3D%3D">Sitemap</a></li>
       </ul>
       <div class="social-links">
-        <a href="#" class="social-icon">𝕏</a>
-        <a href="#" class="social-icon">f</a>
-        <a href="#" class="social-icon">in</a>
-        <a href="#" class="social-icon">📷</a>
+        <a href="https://x.com/McMcsoft" class="social-icon">𝕏</a>
+        <a href="https://www.facebook.com/McsoftTechnologiesITsolutions/" class="social-icon">f</a>
+        <a href="https://www.linkedin.com/in/mcsoft-technologies-it-solutions-008055356/" class="social-icon">in</a>
+        <a href="https://www.instagram.com/mcsoft_technologies/" class="social-icon">📷</a>
       </div>
     </div>
     <div class="footer-bottom">
-      © 2024 MC Soft Technologies. All rights Reserved
+      © 2025 MC Soft Technologies. All rights Reserved
     </div>
   </footer>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('4mPLRge8rhmzL0FuG')
+</script>
+<script src="script.js"></script>
   <script>
     // Mobile menu toggle
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
