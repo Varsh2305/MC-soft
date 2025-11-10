@@ -228,23 +228,41 @@
       color: #fff;
     }
     .cta-row {
-      display: flex;
-      justify-content: center;
-      margin: 2.5rem 0 0 0;
-    }
-    .cta-row button {
-      padding: 1rem 2.5rem;
-      font-size: 1.08rem;
-      font-weight: bold;
-      border-radius: 22px;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      background: var(--color-footer);
-      color: #fff;
-    }
-    .cta-row button:hover { background: #7b2cbf; }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5rem 0 0 0;
+  gap: 1.5rem;
+}
+
+.cta-row a {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-row .primary {
+  background: var(--color-footer);
+  color: #fff;
+  margin: 0 auto;
+  display: block;
+  min-width: 220px;
+  font-size: 1.18rem;
+  font-weight: 600;
+  padding: 1.1rem 0;
+  border-radius: 14px;
+  transition: var(--transition);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 700px) {
+  .cta-row {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
     footer {
       background: var(--color-primary);
       color: #fff;
@@ -288,11 +306,7 @@
       text-decoration: none;
       transition: color 0.15s;
     }
-    .footer-links a:hover { color: #fff; }
-    @media (max-width: 900px) {
-      .contact-sidebar { display: none; }
-      .footer-content { flex-direction: column; gap: 2rem;}
-    }
+    
     @media (max-width: 700px) {
       .nav-container, main { padding-left: 1rem; padding-right: 1rem;}
       .services-grid { grid-template-columns: 1fr;}
@@ -301,6 +315,95 @@
       .highlights-row { gap:1rem;}
       .cta-row { flex-direction: column; gap: 1rem;}
     }
+    /* Hamburger styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1200;
+  background: var(--color-white);
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-left: 1rem;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--color-primary);
+  margin: 5px 0;
+  transition: var(--transition);
+  border-radius: 2px;
+}
+
+/* Mobile Navigation */
+@media (max-width: 900px) {
+  .nav-container {
+    flex-wrap: wrap;
+    padding: 1rem 1rem;
+    
+  }
+  .nav-links {
+    position: fixed;
+    top: 61px; /* Height of header */
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    width: 100vw;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    transform: translateY(-150%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 1200;
+  }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid #eee;
+  }
+  .nav-links a, .dropdown-toggle {
+    display: block;
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.03rem;
+  }
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    margin-top: 0;
+    background: transparent;
+    min-width: unset;
+    padding-left: 2rem;
+    font-size: 1rem;
+    border-radius: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    opacity: 1; visibility: visible; transform: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
   </style>
 </head>
 <body>
@@ -310,8 +413,15 @@
         <h1>MC Soft</h1>
         <p>Technologies and IT Solutions</p>
       </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
       <nav>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
+
           <li><a href="index.html#home">Home</a></li>
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#services">Services</a></li>
@@ -420,11 +530,7 @@
         <h3>MC Soft</h3>
         <p>Technologies and IT Solutions</p>
       </div>
-      <div class="footer-links">
-        <a href="about.html">About Us</a>
-        <a href="careers.html">Careers</a>
-        <a href="privacy.html">Privacy Policy</a>
-      </div>
+      
       <div style="color:#eae6fa;font-size:0.97rem;margin-top:8px;">
         &copy; 2025 MC Soft Technologies. All rights Reserved
       </div>
@@ -436,5 +542,32 @@
       sidebar.classList.toggle('show-contact');
     }
   </script>
+  <script>
+  function toggleContactSidebar() {
+    const sidebar = document.getElementById('contactSidebar');
+    sidebar.classList.toggle('show-contact');
+  }
+  
+  // Hamburger menu toggle logic
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  
+  hamburger.addEventListener('click', function() {
+    navLinks.classList.toggle('open');
+    // Animate hamburger icon
+    hamburger.classList.toggle('active');
+  });
+  
+  // Optional: Hide menu on link click in mobile view
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      if(window.innerWidth <= 900) {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('active');
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
